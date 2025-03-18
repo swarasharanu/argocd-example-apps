@@ -13,6 +13,15 @@ spec:
       labels:
         app: guestbook-ui
     spec:
+      initContainers:
+      - name: ic-msg-datacenter
+        image: ubuntu:latest
+        command:
+            [
+              "/bin/bash",
+              "-c",
+              "echo Init Done - Welcome to xFusionCorp Industries > /ic/news",
+            ]
       containers:
       - image: gcr.io/heptio-images/ks-guestbook-demo:0.2
         name: guestbook-ui
