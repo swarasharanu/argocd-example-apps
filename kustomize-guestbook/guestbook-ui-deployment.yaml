@@ -13,6 +13,10 @@ spec:
       labels:
         app: guestbook-ui
     spec:
+      initContainers:
+      - name: init-container
+        image: busybox
+        command: ['sh', '-c', 'echo "Initializing..." && sleep 5']
       containers:
       - image: gcr.io/heptio-images/ks-guestbook-demo:0.1
         name: guestbook-ui
