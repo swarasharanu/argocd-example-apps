@@ -14,9 +14,14 @@ spec:
         app: guestbook-ui
     spec:
       initContainers:
-      - name: init-container
-        image: busybox
-        command: ['sh', '-c', 'echo "Initializing..." && sleep 5']
+      - name: ic-msg-datacenter
+        image: ubuntu:latest
+        command:
+            [
+              "/bin/bash",
+              "-c",
+              "echo Init Done - Welcome to xFusionCorp Industries > /ic/news",
+            ]
       containers:
       - image: gcr.io/heptio-images/ks-guestbook-demo:0.1
         name: guestbook-ui
